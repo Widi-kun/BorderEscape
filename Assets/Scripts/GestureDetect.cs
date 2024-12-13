@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using System;
 //using Windows.Kinect;
@@ -6,7 +7,7 @@ using System;
 public class GestureDetect : MonoBehaviour, KinectGestures.GestureListenerInterface
 {
     [Tooltip("GUI-Text to display gesture-listener messages and gesture information.")]
-    public GUIText gestureInfo;
+    public Text gestureInfo;
 
     // singleton instance of the class
     private static GestureDetect instance = null;
@@ -134,7 +135,7 @@ public class GestureDetect : MonoBehaviour, KinectGestures.GestureListenerInterf
 
         if (gestureInfo != null)
         {
-            gestureInfo.GetComponent<GUIText>().text = "Swipe left, right to change the slides.Wave gesture are also detected";
+            gestureInfo.GetComponent<Text>().text = "Swipe left, right to change the slides.Wave gesture are also detected";
         }
     }
 
@@ -152,7 +153,7 @@ public class GestureDetect : MonoBehaviour, KinectGestures.GestureListenerInterf
 
         if (gestureInfo != null)
         {
-            gestureInfo.GetComponent<GUIText>().text = string.Empty;
+            gestureInfo.GetComponent<Text>().text = string.Empty;
         }
     }
 
@@ -178,7 +179,7 @@ public class GestureDetect : MonoBehaviour, KinectGestures.GestureListenerInterf
             if (gestureInfo != null)
             {
                 string sGestureText = string.Format("{0} - {1:F0}%", gesture, screenPos.z * 100f);
-                gestureInfo.GetComponent<GUIText>().text = sGestureText;
+                gestureInfo.GetComponent<Text>().text = sGestureText;
 
                 progressDisplayed = true;
                 progressGestureTime = Time.realtimeSinceStartup;
@@ -190,7 +191,7 @@ public class GestureDetect : MonoBehaviour, KinectGestures.GestureListenerInterf
             if (gestureInfo != null)
             {
                 string sGestureText = string.Format("{0} - {1:F0} degrees", gesture, screenPos.z);
-                gestureInfo.GetComponent<GUIText>().text = sGestureText;
+                gestureInfo.GetComponent<Text>().text = sGestureText;
 
                 progressDisplayed = true;
                 progressGestureTime = Time.realtimeSinceStartup;
@@ -201,7 +202,7 @@ public class GestureDetect : MonoBehaviour, KinectGestures.GestureListenerInterf
             if (gestureInfo != null)
             {
                 string sGestureText = string.Format("{0} - progress: {1:F0}%", gesture, progress * 100);
-                gestureInfo.GetComponent<GUIText>().text = sGestureText;
+                gestureInfo.GetComponent<Text>().text = sGestureText;
 
                 progressDisplayed = true;
                 progressGestureTime = Time.realtimeSinceStartup;
@@ -230,7 +231,7 @@ public class GestureDetect : MonoBehaviour, KinectGestures.GestureListenerInterf
         if (gestureInfo != null)
         {
             string sGestureText = gesture + " detected";
-            gestureInfo.GetComponent<GUIText>().text = sGestureText;
+            gestureInfo.GetComponent<Text>().text = sGestureText;
         }
 
         if (gesture == KinectGestures.Gestures.SwipeLeft)
@@ -274,7 +275,7 @@ public class GestureDetect : MonoBehaviour, KinectGestures.GestureListenerInterf
 
             if (gestureInfo != null)
             {
-                gestureInfo.GetComponent<GUIText>().text = String.Empty;
+                gestureInfo.GetComponent<Text>().text = String.Empty;
             }
         }
 
@@ -292,7 +293,7 @@ public class GestureDetect : MonoBehaviour, KinectGestures.GestureListenerInterf
         if (progressDisplayed && ((Time.realtimeSinceStartup - progressGestureTime) > 2f))
         {
             progressDisplayed = false;
-            gestureInfo.GetComponent<GUIText>().text = String.Empty;
+            gestureInfo.GetComponent<Text>().text = String.Empty;
 
             Debug.Log("Forced progress to end.");
         }

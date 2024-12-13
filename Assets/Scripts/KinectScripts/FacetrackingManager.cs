@@ -13,6 +13,7 @@ U should buy the asset from home store if u use it in your project!
 */
 
 using UnityEngine;
+using UnityEngine.UI;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -54,7 +55,7 @@ public class FacetrackingManager : MonoBehaviour
 	public float modelMeshScale = 1f;
 	
 	[Tooltip("GUI-Text to display the FT-manager debug messages.")]
-	public GUIText debugText;
+	public Text debugText;
 
 	// Is currently tracking user's face
 	private bool isTrackingFace = false;
@@ -459,7 +460,7 @@ public class FacetrackingManager : MonoBehaviour
 
 			if(debugText != null)
 			{
-				debugText.GetComponent<GUIText>().text = "Please, wait...";
+				debugText.GetComponent<Text>().text = "Please, wait...";
 			}
 			
 			// ensure the needed dlls are in place and face tracking is available for this interface
@@ -491,20 +492,20 @@ public class FacetrackingManager : MonoBehaviour
 
 			if(debugText != null)
 			{
-				debugText.GetComponent<GUIText>().text = "Ready.";
+				debugText.GetComponent<Text>().text = "Ready.";
 			}
 		} 
 		catch(DllNotFoundException ex)
 		{
 			Debug.LogError(ex.ToString());
 			if(debugText != null)
-				debugText.GetComponent<GUIText>().text = "Please check the Kinect and FT-Library installations.";
+				debugText.GetComponent<Text>().text = "Please check the Kinect and FT-Library installations.";
 		}
 		catch (Exception ex) 
 		{
 			Debug.LogError(ex.ToString());
 			if(debugText != null)
-				debugText.GetComponent<GUIText>().text = ex.Message;
+				debugText.GetComponent<Text>().text = ex.Message;
 		}
 	}
 
@@ -598,11 +599,11 @@ public class FacetrackingManager : MonoBehaviour
 			{
 				if(isTrackingFace)
 				{
-					debugText.GetComponent<GUIText>().text = "Tracking - BodyID: " + primaryUserID;
+					debugText.GetComponent<Text>().text = "Tracking - BodyID: " + primaryUserID;
 				}
 				else
 				{
-					debugText.GetComponent<GUIText>().text = "Not tracking...";
+					debugText.GetComponent<Text>().text = "Not tracking...";
 				}
 			}
 		}

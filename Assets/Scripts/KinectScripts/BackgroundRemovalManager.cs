@@ -13,6 +13,7 @@ U should buy the asset from home store if u use it in your project!
 */
 
 using UnityEngine;
+using UnityEngine.UI;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -40,7 +41,7 @@ public class BackgroundRemovalManager : MonoBehaviour
 	private Color32 defaultColor = new Color32(64, 64, 64, 255);
 	
 	[Tooltip("GUI-Text to display the BR-Manager debug messages.")]
-	public GUIText debugText;
+	public Text debugText;
 
 	// buffer for the raw foreground image
 	private byte[] foregroundImage;
@@ -210,13 +211,13 @@ public class BackgroundRemovalManager : MonoBehaviour
 		{
 			Debug.LogError(ex.ToString());
 			if(debugText != null)
-				debugText.GetComponent<GUIText>().text = "Please check the Kinect and BR-Library installations.";
+				debugText.GetComponent<Text>().text = "Please check the Kinect and BR-Library installations.";
 		}
 		catch (Exception ex) 
 		{
 			Debug.LogError(ex.ToString());
 			if(debugText != null)
-				debugText.GetComponent<GUIText>().text = ex.Message;
+				debugText.GetComponent<Text>().text = ex.Message;
 		}
 	}
 

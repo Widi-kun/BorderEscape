@@ -13,6 +13,7 @@ U should buy the asset from home store if u use it in your project!
 */
 
 using UnityEngine;
+using UnityEngine.UI;
 using System;
 using System.Collections;
 using System.IO;
@@ -35,7 +36,7 @@ public class SpeechManager : MonoBehaviour
 	public float requiredConfidence = 0f;
 	
 	[Tooltip("GUI-Text to display the speech-manager debug messages.")]
-	public GUIText debugText;
+	public Text debugText;
 
 	// Is currently listening
 	private bool isListening;
@@ -164,7 +165,7 @@ public class SpeechManager : MonoBehaviour
 			
 			if(debugText != null)
 			{
-				debugText.GetComponent<GUIText>().text = "Please, wait...";
+				debugText.GetComponent<Text>().text = "Please, wait...";
 			}
 			
 			// ensure the needed dlls are in place and speech recognition is available for this interface
@@ -238,20 +239,20 @@ public class SpeechManager : MonoBehaviour
 
 			if(debugText != null)
 			{
-				debugText.GetComponent<GUIText>().text = "Ready.";
+				debugText.GetComponent<Text>().text = "Ready.";
 			}
 		} 
 		catch(DllNotFoundException ex)
 		{
 			Debug.LogError(ex.ToString());
 			if(debugText != null)
-				debugText.GetComponent<GUIText>().text = "Please check the Kinect and SAPI installations.";
+				debugText.GetComponent<Text>().text = "Please check the Kinect and SAPI installations.";
 		}
 		catch (Exception ex) 
 		{
 			Debug.LogError(ex.ToString());
 			if(debugText != null)
-				debugText.GetComponent<GUIText>().text = ex.Message;
+				debugText.GetComponent<Text>().text = ex.Message;
 		}
 	}
 
@@ -321,11 +322,11 @@ public class SpeechManager : MonoBehaviour
 			{
 				if(isPhraseRecognized)
 				{
-					debugText.GetComponent<GUIText>().text = string.Format("{0}  ({1:F1}%)", phraseTagRecognized, phraseConfidence * 100f);
+					debugText.GetComponent<Text>().text = string.Format("{0}  ({1:F1}%)", phraseTagRecognized, phraseConfidence * 100f);
 				}
 				else if(isListening)
 				{
-					debugText.GetComponent<GUIText>().text = "Listening...";
+					debugText.GetComponent<Text>().text = "Listening...";
 				}
 			}
 		}

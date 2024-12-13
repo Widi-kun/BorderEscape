@@ -13,6 +13,7 @@ U should buy the asset from home store if u use it in your project!
 */
 
 using UnityEngine;
+using UnityEngine.UI;
 
 using System;
 using System.Collections;
@@ -30,7 +31,7 @@ public class BoneOrientationsConstraint
 	// list of joint constraints
     private readonly List<BoneOrientationConstraint> jointConstraints = new List<BoneOrientationConstraint>();
 
-	private GUIText debugText;
+	private Text debugText;
 
 	private long frameNum = 0;
 	//private float currentTime = 0f;
@@ -41,7 +42,7 @@ public class BoneOrientationsConstraint
     {
     }
 
-	public void SetDebugText(GUIText debugText)
+	public void SetDebugText(Text debugText)
 	{
 		this.debugText = debugText;
 	}
@@ -149,7 +150,7 @@ public class BoneOrientationsConstraint
 //				if(debugText != null && (Time.time - currentTime) >= 0.5f)
 //				{
 //					currentTime = Time.time;
-//					//debugText.GetComponent<GUIText>().text = sDebugText;
+//					//debugText.GetComponent<Text>().text = sDebugText;
 //				}
 //
 //				//Debug.Log(sDebugText);
@@ -199,7 +200,7 @@ public class BoneOrientationsConstraint
 			{
 				if(debugText != null && jc.thisJoint == (int)KinectInterop.JointType.ElbowLeft)
 				{
-//					debugText.GetComponent<GUIText>().text = sDebug;
+//					debugText.GetComponent<Text>().text = sDebug;
 				}
 
 				Debug.Log(sDebug);

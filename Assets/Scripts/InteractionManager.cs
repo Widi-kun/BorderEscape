@@ -13,6 +13,7 @@ U should buy the asset from home store if u use it in your project!
 */
 
 using UnityEngine;
+using UnityEngine.UI;
 //using Windows.Kinect;
 
 using System.Collections;
@@ -64,7 +65,7 @@ public class InteractionManager : MonoBehaviour
 	//public bool convertMouseToFullScreen = false;
 	
 	[Tooltip("GUI-Text to display the interaction-manager debug messages.")]
-	public GUIText debugText;
+	public Text debugText;
 	
 	private long primaryUserID = 0;
 	
@@ -655,65 +656,65 @@ public class InteractionManager : MonoBehaviour
 		// display debug information
 		if(debugText)
 		{
-			string sGuiText = string.Empty;
+			string sText = string.Empty;
 
 			//if(isLeftHandPrimary)
 			{
-				sGuiText += "LCursor" + (isLeftHandPrimary ? "*: " : " : ") + leftHandScreenPos.ToString();
+				sText += "LCursor" + (isLeftHandPrimary ? "*: " : " : ") + leftHandScreenPos.ToString();
 				
 				if(lastLeftHandEvent == HandEventType.Grip)
 				{
-					sGuiText += "  LeftGrip";
+					sText += "  LeftGrip";
 				}
 				else if(lastLeftHandEvent == HandEventType.Release)
 				{
-					sGuiText += "  LeftRelease";
+					sText += "  LeftRelease";
 				}
 				
 				if(isLeftHandClick)
 				{
-					sGuiText += "  LeftClick";
+					sText += "  LeftClick";
 				}
 //				else if(leftHandClickProgress > 0.5f)
 //				{
-//					sGuiText += String.Format("  {0:F0}%", leftHandClickProgress * 100);
+//					sText += String.Format("  {0:F0}%", leftHandClickProgress * 100);
 //				}
 				
 				if(isLeftHandPress)
 				{
-					sGuiText += "  LeftPress";
+					sText += "  LeftPress";
 				}
 			}
 			
 			//if(isRightHandPrimary)
 			{
-				sGuiText += "\nRCursor" + (isRightHandPrimary ? "*: " : " : ") + rightHandScreenPos.ToString();
+				sText += "\nRCursor" + (isRightHandPrimary ? "*: " : " : ") + rightHandScreenPos.ToString();
 				
 				if(lastRightHandEvent == HandEventType.Grip)
 				{
-					sGuiText += "  RightGrip";
+					sText += "  RightGrip";
 				}
 				else if(lastRightHandEvent == HandEventType.Release)
 				{
-					sGuiText += "  RightRelease";
+					sText += "  RightRelease";
 				}
 				
 				if(isRightHandClick)
 				{
-					sGuiText += "  RightClick";
+					sText += "  RightClick";
 				}
 //				else if(rightHandClickProgress > 0.5f)
 //				{
-//					sGuiText += String.Format("  {0:F0}%", rightHandClickProgress * 100);
+//					sText += String.Format("  {0:F0}%", rightHandClickProgress * 100);
 //				}
 
 				if(isRightHandPress)
 				{
-					sGuiText += "  RightPress";
+					sText += "  RightPress";
 				}
 			}
 			
-			debugText.GetComponent<GUIText>().text = sGuiText;
+			debugText.GetComponent<Text>().text = sText;
 		}
 		
 		// display the cursor status and position

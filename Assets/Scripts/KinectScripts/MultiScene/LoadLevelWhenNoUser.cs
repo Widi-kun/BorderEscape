@@ -13,6 +13,8 @@ U should buy the asset from home store if u use it in your project!
 */
 
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class LoadLevelWhenNoUser : MonoBehaviour 
@@ -24,7 +26,7 @@ public class LoadLevelWhenNoUser : MonoBehaviour
 	public bool validateKinectManager = true;
 
 	[Tooltip("GUI-Text used to display the debug messages.")]
-	public GUIText debugText;
+	public Text debugText;
 
 	private bool levelLoaded = false;
 
@@ -37,7 +39,7 @@ public class LoadLevelWhenNoUser : MonoBehaviour
 
 			if(manager == null || !manager.IsInitialized())
 			{
-				debugText.GetComponent<GUIText>().text = "KinectManager is not initialized!";
+				debugText.GetComponent<Text>().text = "KinectManager is not initialized!";
 				levelLoaded = true;
 			}
 		}
@@ -53,7 +55,7 @@ public class LoadLevelWhenNoUser : MonoBehaviour
 			if(manager != null && !manager.IsUserDetected())
 			{
 				levelLoaded = true;
-				Application.LoadLevel(nextLevel);
+				SceneManager.LoadScene(nextLevel);
 			}
 		}
 	}

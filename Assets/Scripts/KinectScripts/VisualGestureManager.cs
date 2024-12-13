@@ -13,6 +13,7 @@ U should buy the asset from home store if u use it in your project!
 */
 
 using UnityEngine;
+using UnityEngine.UI;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -83,7 +84,7 @@ public class VisualGestureManager : MonoBehaviour
 	public List<MonoBehaviour> visualGestureListeners;
 	
 	[Tooltip("GUI-Text to display the VG-manager debug messages.")]
-	public GUIText debugText;
+	public Text debugText;
 
 
 	// primary user ID, as reported by KinectManager
@@ -314,13 +315,13 @@ public class VisualGestureManager : MonoBehaviour
 		{
 			Debug.LogError(ex.ToString());
 			if(debugText != null)
-				debugText.GetComponent<GUIText>().text = "Please check the Kinect and FT-Library installations.";
+				debugText.GetComponent<Text>().text = "Please check the Kinect and FT-Library installations.";
 		}
 		catch (Exception ex) 
 		{
 			Debug.LogError(ex.ToString());
 			if(debugText != null)
-				debugText.GetComponent<GUIText>().text = ex.Message;
+				debugText.GetComponent<Text>().text = ex.Message;
 		}
 	}
 

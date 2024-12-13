@@ -13,6 +13,7 @@ U should buy the asset from home store if u use it in your project!
 */
 
 using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class LoadLevelWithDelay : MonoBehaviour 
@@ -27,7 +28,7 @@ public class LoadLevelWithDelay : MonoBehaviour
 	public bool validateKinectManager = true;
 
 	[Tooltip("GUI-Text used to display the debug messages.")]
-	public GUIText debugText;
+	public Text debugText;
 
 	private float timeToLoadLevel = 0f;
 	private bool levelLoaded = false;
@@ -43,7 +44,7 @@ public class LoadLevelWithDelay : MonoBehaviour
 
 			if(manager == null || !manager.IsInitialized())
 			{
-				debugText.GetComponent<GUIText>().text = "KinectManager is not initialized!";
+				debugText.GetComponent<Text>().text = "KinectManager is not initialized!";
 				levelLoaded = true;
 			}
 		}
@@ -65,7 +66,7 @@ public class LoadLevelWithDelay : MonoBehaviour
 
 				if(debugText != null)
 				{
-					debugText.GetComponent<GUIText>().text = string.Format("Time to the next level: {0:F0} s.", timeRest);
+					debugText.GetComponent<Text>().text = string.Format("Time to the next level: {0:F0} s.", timeRest);
 				}
 			}
 		}
